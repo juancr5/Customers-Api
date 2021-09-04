@@ -6,19 +6,19 @@
         init: init
     };
 
-    var mongoose = require('mongoose');
+    let mongoose = require('mongoose');
 
     //traer el Json con los parametros de la conexión
     var mongodbConfig = require('../../config/mongodb/mongodb-config').mongodb;
 
     function init() {
 
-        var options = {
+        let options = {
             promiseLibrary: require('bluebird'),
             useNewUrlParser: true
         };
 
-        var connectionString = prepareConnectionString(mongodbConfig);
+        let connectionString = prepareConnectionString(mongodbConfig);
 
         mongoose.connect(connectionString, options)
             .then(function (result) {
@@ -31,7 +31,7 @@
     }
 
     function prepareConnectionString(config) {
-        var connectionString = 'mongodb://';
+        let connectionString = 'mongodb://';
 
         if (config.user) {
             connectionString += config.user + ':' + config.password + '@';
